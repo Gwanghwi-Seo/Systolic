@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-`include "./param.v"
+`include "param.v"
 
 module sram_buffer #(parameter WIDTH=`BIT_DATA) (clka, ena, wea, douta, douta_buf);
 input clka, ena, wea;
@@ -19,4 +19,3 @@ always @(posedge clka) begin
         r_douta_buf <= 0;
 end
 endmodule
-

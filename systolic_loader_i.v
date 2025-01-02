@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-`include "./param.v"
+`include "param.v"
 
 module systolic_loader_i (CLK, i_Data_I_In, o_Data_I_In);
     input CLK;
@@ -694,4 +694,3 @@ module systolic_loader_i (CLK, i_Data_I_In, o_Data_I_In);
     end
 
 endmodule
-

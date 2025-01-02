@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-`include "./param.v"
+`include "param.v"
 
 module psum_wb(
     CLK, 
@@ -55,4 +55,3 @@ always@(posedge CLK) begin
     
 end
 endmodule
-

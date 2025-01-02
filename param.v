@@ -53,8 +53,6 @@
 `define FSM_LD `FSM_BIT'd3
 `define FSM_RUN `FSM_BIT'd4
 
-`define TDLY_MEM 1
-//`define RTL SIM
 
 
 

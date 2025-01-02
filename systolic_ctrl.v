@@ -275,21 +275,12 @@ begin
         r_Num_Sram_I <= 0;
         r_Num_Sram_W <= 0;
         r_Num_Sram_P <= 0;
-        //Instr_Flag <= 0;
-        test_flag <= 0;
-        r_Layer_End <= 0;
+        Instr_Flag <= 0;
         r_Init_Psum <= 0;
-        Run_Cnt_Init <= 0;
-        r_Init_Psram_Addr_One <= 0;
-        r_Init_Psram_En_One <= 0;
-        r_Init_Psram_Wea_One <= 0;
-        r_Init_Psram_Addr_Two <= 0;
-        r_Init_Psram_En_Two <= 0;
-        r_Init_Psram_Wea_Two <= 0;
-        Done_Init_Psum <= 0;
+        test_flag <= 0;
     end
     else if(in_valid) begin
-        //Instr_Flag <= 1'b0; //receive instruction, flag set to 0
+        Instr_Flag <= 1'b0; //receive instruction, flag set to 0
         if(in_opcode == `OPCODE_PARAM)begin
             case(in_param)
             `PARAM_S: begin
@@ -409,15 +400,6 @@ begin
             r_Isram_Addr_Decode_Two       <= 0;
             r_Isram_En_Decode_One         <= 0;
             r_Isram_En_Decode_Two         <= 0;
-            r_Init_Psum <= r_Init_Psum;
-            Run_Cnt_Init <= Run_Cnt_Init;
-            r_Init_Psram_Addr_One <= r_Init_Psram_Addr_One;
-            r_Init_Psram_En_One <= r_Init_Psram_En_One;
-            r_Init_Psram_Wea_One <= r_Init_Psram_Wea_One;
-            r_Init_Psram_Addr_Two <= r_Init_Psram_Addr_Two;
-            r_Init_Psram_En_Two <= r_Init_Psram_En_Two;
-            r_Init_Psram_Wea_Two <= r_Init_Psram_Wea_Two;
-            Done_Init_Psum <= Done_Init_Psum;
 
 
             r_Instr_Data       <= r_Instr_Data;
@@ -431,7 +413,7 @@ begin
             r_Wsram_Wea_Decode_Two        <= r_Wsram_Wea_Decode_Two;
             r_Valid_WB_Psum_One    <= r_Valid_WB_Psum_One;
             r_Valid_WB_Psum_Two    <= r_Valid_WB_Psum_Two;
-            Fsm_Execute_Flag    <= 0;
+            // Fsm_Execute_Flag    <= Fsm_Execute_Flag;
             r_WB_Param         <= r_WB_Param;
             r_Psram_Addr_Decode_One       <= r_Psram_Addr_Decode_One;
             r_Psram_Addr_Decode_Two       <= r_Psram_Addr_Decode_Two;
@@ -469,7 +451,6 @@ begin
                 r_Num_Sram_W       <= r_Num_Sram_W;
                 r_Num_Sram_P       <= r_Num_Sram_P;
                 r_Layer_End <= r_Layer_End;
-                r_Init_Psum <= 0;
                 r_Wsram_Addr_Decode_One       <= r_Wsram_Addr_Decode_One;
                 r_Wsram_Addr_Decode_Two       <= r_Wsram_Addr_Decode_Two;
                 r_Wsram_En_Decode_One         <= r_Wsram_En_Decode_One;
@@ -520,23 +501,13 @@ begin
                 r_Isram_Wea_Decode_Two        <= r_Isram_Wea_Decode_Two;
                 r_Valid_WB_Psum_One    <= r_Valid_WB_Psum_One;
                 r_Valid_WB_Psum_Two    <= r_Valid_WB_Psum_Two;
-                Fsm_Execute_Flag    <= 0;
-                r_Init_Psum <= 0;
+                // Fsm_Execute_Flag    <= Fsm_Execute_Flag;
                 r_WB_Param         <= r_WB_Param;
                 r_Psram_Addr_Decode_One       <= r_Psram_Addr_Decode_One;
                 r_Psram_Addr_Decode_Two       <= r_Psram_Addr_Decode_Two;
                 r_Psram_En_Decode_One         <= r_Psram_En_Decode_One;
                 r_Psram_En_Decode_Two         <= r_Psram_En_Decode_Two;
             end
-            r_Init_Psum <= r_Init_Psum;
-            Run_Cnt_Init <= Run_Cnt_Init;
-            r_Init_Psram_Addr_One <= r_Init_Psram_Addr_One;
-            r_Init_Psram_En_One <= r_Init_Psram_En_One;
-            r_Init_Psram_Wea_One <= r_Init_Psram_Wea_One;
-            r_Init_Psram_Addr_Two <= r_Init_Psram_Addr_Two;
-            r_Init_Psram_En_Two <= r_Init_Psram_En_Two;
-            r_Init_Psram_Wea_Two <= r_Init_Psram_Wea_Two;
-            Done_Init_Psum <= Done_Init_Psum;
         end
         else if (in_opcode == `OPCODE_EX)begin
             //write signal initialize
@@ -584,16 +555,6 @@ begin
             r_Valid_WB_Psum_One    <= r_Valid_WB_Psum_One;
             r_Valid_WB_Psum_Two    <= r_Valid_WB_Psum_Two;
             // Fsm_Execute_Flag    <= Fsm_Execute_Flag;
-            r_Init_Psum <= r_Init_Psum;
-            Run_Cnt_Init <= Run_Cnt_Init;
-            r_Init_Psram_Addr_One <= r_Init_Psram_Addr_One;
-            r_Init_Psram_En_One <= r_Init_Psram_En_One;
-            r_Init_Psram_Wea_One <= r_Init_Psram_Wea_One;
-            r_Init_Psram_Addr_Two <= r_Init_Psram_Addr_Two;
-            r_Init_Psram_En_Two <= r_Init_Psram_En_Two;
-            r_Init_Psram_Wea_Two <= r_Init_Psram_Wea_Two;
-            Done_Init_Psum <= Done_Init_Psum;
-
             r_WB_Param         <= r_WB_Param;
             r_Psram_Addr_Decode_One       <= r_Psram_Addr_Decode_One;
             r_Psram_Addr_Decode_Two       <= r_Psram_Addr_Decode_Two;
@@ -639,18 +600,7 @@ begin
             r_Wsram_Wea_Decode_Two        <= r_Wsram_Wea_Decode_Two;
             r_Valid_WB_Psum_One    <= r_Valid_WB_Psum_One;
             r_Valid_WB_Psum_Two    <= r_Valid_WB_Psum_Two;
-            Fsm_Execute_Flag    <= 0;
-
-            r_Init_Psum <= r_Init_Psum;
-            Run_Cnt_Init <= Run_Cnt_Init;
-            r_Init_Psram_Addr_One <= r_Init_Psram_Addr_One;
-            r_Init_Psram_En_One <= r_Init_Psram_En_One;
-            r_Init_Psram_Wea_One <= r_Init_Psram_Wea_One;
-            r_Init_Psram_Addr_Two <= r_Init_Psram_Addr_Two;
-            r_Init_Psram_En_Two <= r_Init_Psram_En_Two;
-            r_Init_Psram_Wea_Two <= r_Init_Psram_Wea_Two;
-            Done_Init_Psum <= Done_Init_Psum;
-            
+            // Fsm_Execute_Flag    <= Fsm_Execute_Flag;
             // r_WB_Param         <= r_WB_Param;
             r_Psram_Addr_Decode_One       <= r_Psram_Addr_Decode_One;
             r_Psram_En_Decode_One         <= r_Psram_En_Decode_One;
@@ -672,6 +622,9 @@ begin
                     r_Psram_En_WB_One <= 0;
                     r_Valid_WB_Psum_One <= 0;
                 end
+
+
+
 
             r_Param_S          <= r_Param_S;
             r_Param_OC         <= r_Param_OC;
@@ -696,36 +649,17 @@ begin
             r_Wsram_Wea_Decode_One        <= r_Wsram_Wea_Decode_One;
             r_Wsram_Wea_Decode_Two        <= r_Wsram_Wea_Decode_Two;
             // r_Valid_WB_Psum    <= r_Valid_WB_Psum;
-            Fsm_Execute_Flag    <= 0;
-            
-            r_Init_Psum <= r_Init_Psum;
-            Run_Cnt_Init <= Run_Cnt_Init;
-            r_Init_Psram_Addr_One <= r_Init_Psram_Addr_One;
-            r_Init_Psram_En_One <= r_Init_Psram_En_One;
-            r_Init_Psram_Wea_One <= r_Init_Psram_Wea_One;
-            r_Init_Psram_Addr_Two <= r_Init_Psram_Addr_Two;
-            r_Init_Psram_En_Two <= r_Init_Psram_En_Two;
-            r_Init_Psram_Wea_Two <= r_Init_Psram_Wea_Two;
-            Done_Init_Psum <= Done_Init_Psum;
-            
+            // Fsm_Execute_Flag    <= Fsm_Execute_Flag;
             r_WB_Param         <= r_WB_Param;
             // r_Psram_Addr_Decode       <= r_Psram_Addr_Decode;
             // r_Psram_En_Decode         <= r_Psram_En_Decode;
             
         end
 
-        else if (in_opcode == `OPCODE_INITPSUM) begin
+        else if (in_opcode == `OPCODE_INITPSUM)begin
             r_Init_Psum <= 1'b1; //init psum
-            
-            Run_Cnt_Init <= Run_Cnt_Init;
-            r_Init_Psram_Addr_One <= r_Init_Psram_Addr_One;
-            r_Init_Psram_En_One <= r_Init_Psram_En_One;
-            r_Init_Psram_Wea_One <= r_Init_Psram_Wea_One;
-            r_Init_Psram_Addr_Two <= r_Init_Psram_Addr_Two;
-            r_Init_Psram_En_Two <= r_Init_Psram_En_Two;
-            r_Init_Psram_Wea_Two <= r_Init_Psram_Wea_Two;
-            Done_Init_Psum <= Done_Init_Psum;
-            
+
+
             r_Psram_En_Decode_One <= r_Psram_En_Decode_One;
             r_Psram_En_Decode_Two <= r_Psram_En_Decode_Two;
             r_Param_S          <= r_Param_S;
@@ -752,7 +686,7 @@ begin
             r_Wsram_Wea_Decode_Two        <= r_Wsram_Wea_Decode_Two;
             r_Valid_WB_Psum_One    <= r_Valid_WB_Psum_One;
             r_Valid_WB_Psum_Two    <= r_Valid_WB_Psum_Two;
-            Fsm_Execute_Flag    <= 0;
+            // Fsm_Execute_Flag    <= Fsm_Execute_Flag;
             r_WB_Param         <= r_WB_Param;
             r_Psram_Addr_Decode_One       <= r_Psram_Addr_Decode_One;
             r_Psram_Addr_Decode_Two       <= r_Psram_Addr_Decode_Two;
@@ -787,11 +721,10 @@ begin
             r_Wsram_Wea_Decode_Two        <= r_Wsram_Wea_Decode_Two;
             r_Valid_WB_Psum_One    <= r_Valid_WB_Psum_One;
             r_Valid_WB_Psum_Two    <= r_Valid_WB_Psum_Two;
-            Fsm_Execute_Flag    <= 0;
+            // Fsm_Execute_Flag    <= Fsm_Execute_Flag;
             r_WB_Param         <= r_WB_Param;
             r_Psram_Addr_Decode_One       <= r_Psram_Addr_Decode_One;
             r_Psram_Addr_Decode_Two       <= r_Psram_Addr_Decode_Two;
-            r_Init_Psum <= 1'b0;
 
         end
     end
@@ -818,66 +751,20 @@ begin
         r_Wsram_En_Decode_Two         <= r_Wsram_En_Decode_Two;
         r_Wsram_Wea_Decode_One        <= r_Wsram_Wea_Decode_One;
         r_Wsram_Wea_Decode_Two        <= r_Wsram_Wea_Decode_Two;
-        if(r_Init_Psum && (!Done_Init_Psum)) begin
-            if(Run_Cnt_Init < (((r_Param_OC - 8'd1) / `PE_COL)+1'b1)*r_Param_S) begin
-                Run_Cnt_Init <= Run_Cnt_Init + 1'b1;
-                if(!r_Num_Sram_P) begin
-                    r_Init_Psram_Addr_One <= Run_Cnt_Init;
-                    r_Init_Psram_En_One <= 1'b1;
-                    r_Init_Psram_Wea_One <= 1'b1;
-                end
-                else begin
-                    r_Init_Psram_Addr_Two <= Run_Cnt_Init;
-                    r_Init_Psram_En_Two <= 1'b1;
-                    r_Init_Psram_Wea_Two <= 1'b1;
-                end
-                Done_Init_Psum <= Done_Init_Psum;
-                r_Init_Psum <= r_Init_Psum;
-            end
-            else if (Run_Cnt_Init == (((r_Param_OC - 8'd1)/`PE_COL)+1'b1)*r_Param_S) begin
-                Done_Init_Psum <= 1'b1;
-                r_Init_Psum <= 1'b0;
-            end
-            else begin
-                Run_Cnt_Init <= 0;
-                r_Init_Psram_Addr_One <= 0;
-                r_Init_Psram_En_One <= 0;
-                r_Init_Psram_Wea_One <= 0;
-                r_Init_Psram_Addr_Two <= 0;
-                r_Init_Psram_En_Two <= 0;
-                r_Init_Psram_Wea_Two <= 0;
-            end
-        end
-        else begin
-            r_Init_Psum <= r_Init_Psum;
-            Run_Cnt_Init <= 0;
-            r_Init_Psram_Addr_One <= 0;
-            r_Init_Psram_En_One <= 0;
-            r_Init_Psram_Wea_One <= 0;
-            r_Init_Psram_Addr_Two <= 0;
-            r_Init_Psram_En_Two <= 0;
-            r_Init_Psram_Wea_Two <= 0;
-            Done_Init_Psum <= Done_Init_Psum;
-        end
 
-        //Instr_Flag <= Instr_Flag;
         r_Valid_WB_Psum_One    <= 0;
         r_Valid_WB_Psum_Two    <= 0;
         if(Last_Execute)begin
             test_flag_2 <= 1'b1;
             Fsm_Execute_Flag <= 0;
-            Done_Init_Psum <= 0;
         end
-        else begin
-            Done_Init_Psum <= Done_Init_Psum;
 
-        Fsm_Execute_Flag    <= Fsm_Execute_Flag;
+        // Fsm_Execute_Flag    <= Fsm_Execute_Flag;
         r_WB_Param         <= r_WB_Param;
         r_Psram_Addr_Decode_One       <= r_Psram_Addr_Decode_One;
         r_Psram_Addr_Decode_Two       <= r_Psram_Addr_Decode_Two;
         r_Psram_En_WB_One         <= 0;
         r_Psram_En_WB_Two         <= 0;
-        end
     
         
     end
@@ -895,7 +782,7 @@ end
 always@(posedge CLK, posedge RST) begin
     if(RST) begin
         FSM_State <= `FSM_IDLE;
-        //Fsm_Execute_Flag <= 0;
+        Fsm_Execute_Flag <= 0;
         r_Psram_Addr_FSM <= 0;
         r_Psram_En_FSM <= 0;
         // r_Psram_Wea <= 0;
@@ -921,8 +808,6 @@ always@(posedge CLK, posedge RST) begin
         Finish_Flag <= 0;
         Layer_Finish <= 0;
         test_flag_2 <= 0;
-        Instr_Flag <= 0;
-        //Done_Init_Psum <= 0;
     end
 
     else begin
@@ -961,9 +846,6 @@ always@(posedge CLK, posedge RST) begin
             Finish_Flag <= 0;
             Layer_Finish <= 0;
             Layer_Finish_Flag <= 0;
-            Instr_Flag <= Instr_Flag;
-            //Done_Init_Psum <= Done_Init_Psum;
-            
             end
             
     
@@ -971,33 +853,27 @@ always@(posedge CLK, posedge RST) begin
             //state change
             if (Fsm_Execute_Flag) begin
                 FSM_State <= `FSM_SET;
-                //Fsm_Execute_Flag <= 0;
-                //Done_Init_Psum <= Done_Init_Psum;
-                Instr_Flag <= 1'b0;
+                Fsm_Execute_Flag <= 0;
             end
             else if(Layer_Finish) begin
                 FSM_State <= `FSM_IDLE;
                 Layer_Finish_Flag <= 1'b1; //Layer Finish & Finish_Flag = 1(Finish_Flag = 1, from Run state)
-                //Fsm_Execute_Flag <= Fsm_Execute_Flag;
-                //Done_Init_Psum <= Done_Init_Psum;
-                Instr_Flag <= 1'b0;
             end
             else if(Done_Init_Psum && !in_valid) begin//check end of psum init and no instruction
                 // FSM_State <= `FSM_SET;
-                //Done_Init_Psum <= 1'b0;
+                Done_Init_Psum <= 1'b0;
                 Instr_Flag <= 1'b1; //to cpu, if last excution instr is Layer_Finish.
                 Layer_Finish <= r_Layer_End; // this computation set is end of layer.
-                //Fsm_Execute_Flag <= Fsm_Execute_Flag;
             end
             else begin
-                Instr_Flag <= 1'b0;
                 FSM_State <= FSM_State;
-                //Fsm_Execute_Flag <= Fsm_Execute_Flag;
-                //Done_Init_Psum <= Done_Init_Psum;
+                r_Layer_End <= r_Layer_End;
             end
 
             Finish_Flag <= 0; //reset finish flag
-            
+
+
+
             // set value upload
             Set_Param_S <= r_Param_S;
             Set_Param_OC <= r_Param_OC;
@@ -1018,8 +894,7 @@ always@(posedge CLK, posedge RST) begin
             // State_OC <= Next_OC;
             Base_I <= Set_Param_S * (State_IC / `PE_ROW);
             Base_W <= State_IC + (Set_Param_IC * (State_OC / `PE_COL));
-            Instr_Flag <= Instr_Flag;
-            //Fsm_Execute_Flag <= Fsm_Execute_Flag;
+            
             if(State_OC + `PE_COL < Set_Param_OC) begin
                 Run_OC <= `BIT_DATA'd`PE_COL;
 
@@ -1050,7 +925,6 @@ always@(posedge CLK, posedge RST) begin
                 end
             end
             FSM_State <= `FSM_LD;
-            //Done_Init_Psum <= Done_Init_Psum;
         end
         `FSM_LD: begin
             if(Run_Cnt < `PE_ROW) begin
@@ -1209,9 +1083,6 @@ always@(posedge CLK, posedge RST) begin
                 r_Wsram_Addr_FSM <= 0;
                 FSM_State <= `FSM_RUN;
             end
-            Instr_Flag <= Instr_Flag;
-            //Fsm_Execute_Flag <= Fsm_Execute_Flag;
-            //Done_Init_Psum <= Done_Init_Psum;
         end
         
         
@@ -1426,7 +1297,7 @@ always@(posedge CLK, posedge RST) begin
                 endcase
 
                 FSM_State       <= FSM_State;
-                //Fsm_Execute_Flag <= Fsm_Execute_Flag;
+                // Fsm_Execute_Flag <= Fsm_Execute_Flag ;
                 // r_Psram_Addr_FSM    <= r_Psram_Addr_FSM;
                 // r_Psram_En_FSM      <= r_Psram_En_FSM;
                 // r_Psram_Wea     <= r_Psram_Wea;
@@ -1454,12 +1325,12 @@ always@(posedge CLK, posedge RST) begin
             else begin
                 if(Last_Execute) begin
                     FSM_State <= `FSM_SWITCH;
-                    //Fsm_Execute_Flag <= 0;
+                    // Fsm_Execute_Flag <= 0;
                     Finish_Flag <= 1'b1;
                 end
                 else begin
                     FSM_State <= `FSM_SET;
-                    //Fsm_Execute_Flag <= Fsm_Execute_Flag;
+                    // Fsm_Execute_Flag <= Fsm_Execute_Flag;
                     Finish_Flag <= Finish_Flag;
                 end
 
@@ -1503,8 +1374,8 @@ always@(posedge CLK, posedge RST) begin
                 Systolic_En_W   <= Systolic_En_W;
                 // Finish_Flag     <= Finish_Flag;
             end
-            Instr_Flag <= Instr_Flag;
-            //Done_Init_Psum <= Done_Init_Psum;
+            
+            
         end
 
 
@@ -1514,7 +1385,7 @@ always@(posedge CLK, posedge RST) begin
 
             FSM_State <= `FSM_IDLE;
             // FSM_State       <= FSM_State;
-            //Fsm_Execute_Flag <= Fsm_Execute_Flag ;
+            // Fsm_Execute_Flag <= Fsm_Execute_Flag ;
             r_Psram_Addr_FSM    <= r_Psram_Addr_FSM;
             r_Psram_En_FSM      <= r_Psram_En_FSM;
             // r_Psram_Wea     <= r_Psram_Wea;
@@ -1538,8 +1409,6 @@ always@(posedge CLK, posedge RST) begin
             Systolic_En_ID  <= Systolic_En_ID;
             Systolic_En_W   <= Systolic_En_W;
             Finish_Flag     <= Finish_Flag;
-            Instr_Flag <= Instr_Flag;
-            //Done_Init_Psum <= Done_Init_Psum;
         end
         endcase
     end
@@ -1548,67 +1417,58 @@ end
 
 
 
-// //initailize psum sram
+//initailize psum sram
 
-// always@(posedge CLK, posedge RST) begin
-//     if(RST) begin
-//         Run_Cnt_Init <= 0;
-//         r_Init_Psram_Addr_One <= 0;
-//         r_Init_Psram_En_One <= 0;
-//         r_Init_Psram_Wea_One <= 0;
-//         r_Init_Psram_Addr_Two <= 0;
-//         r_Init_Psram_En_Two <= 0;
-//         r_Init_Psram_Wea_Two <= 0;
-//         Done_Init_Psum <= 0;
-//         //r_Init_Psum <= r_Init_Psum;
-//     end
-//     else if(r_Init_Psum && (!Done_Init_Psum)) begin
-//         if(Run_Cnt_Init < (((r_Param_OC - 8'd1) / `PE_COL)+1'b1) * r_Param_S) begin
-//             Run_Cnt_Init <= Run_Cnt_Init +1'b1;
-//             //r_Init_Psum <= r_Init_Psum;
-//             if (!r_Num_Sram_P) begin
-//                 r_Init_Psram_Addr_One <= Run_Cnt_Init;
-//                 r_Init_Psram_En_One <= 1'b1;
-//                 r_Init_Psram_Wea_One <= 1'b1;
+always@(posedge CLK, posedge RST) begin
+    if(RST) begin
+        Run_Cnt_Init <= 0;
+        r_Init_Psram_Addr_One <= 0;
+        r_Init_Psram_En_One <= 0;
+        r_Init_Psram_Wea_One <= 0;
+        r_Init_Psram_Addr_Two <= 0;
+        r_Init_Psram_En_Two <= 0;
+        r_Init_Psram_Wea_Two <= 0;
+        Done_Init_Psum <= 0;
+    end
+    else if(r_Init_Psum && (!Done_Init_Psum)) begin
+        if(Run_Cnt_Init < (((r_Param_OC - 8'd1) / `PE_COL)+1'b1) * r_Param_S) begin
+            Run_Cnt_Init <= Run_Cnt_Init +1'b1;
+            if (!r_Num_Sram_P) begin
+                r_Init_Psram_Addr_One <= Run_Cnt_Init;
+                r_Init_Psram_En_One <= 1'b1;
+                r_Init_Psram_Wea_One <= 1'b1;
 
-//             end
-//             else begin
-//                 r_Init_Psram_Addr_Two <= Run_Cnt_Init;
-//                 r_Init_Psram_En_Two <= 1'b1;
-//                 r_Init_Psram_Wea_Two <= 1'b1;
-//             end
-//             Done_Init_Psum <= Done_Init_Psum;
-//         end
-//         else if (Run_Cnt_Init == (((r_Param_OC - 8'd1) / `PE_COL)+1'b1) * r_Param_S) begin
-//             Done_Init_Psum <= 1'b1;
-//             //r_Init_Psum <= 0;
-//         end
-//         else begin
-//             Run_Cnt_Init <= 0;
-//             r_Init_Psram_Addr_One <= 0;
-//             r_Init_Psram_En_One <= 0;
-//             r_Init_Psram_Wea_One <= 0;
-//             r_Init_Psram_Addr_Two <= 0;
-//             r_Init_Psram_En_Two <= 0;
-//             r_Init_Psram_Wea_Two <= 0;
-//             //r_Init_Psum <= r_Init_Psum;
-//             Done_Init_Psum <= Done_Init_Psum;
-//         end
-//     end
-//     else begin
-//         Run_Cnt_Init <= 0;
-//         r_Init_Psram_Addr_One <= 0;
-//         r_Init_Psram_En_One <= 0;
-//         r_Init_Psram_Wea_One <= 0;
-//         r_Init_Psram_Addr_Two <= 0;
-//         r_Init_Psram_En_Two <= 0;
-//         r_Init_Psram_Wea_Two <= 0;
-//         //r_Init_Psum <= r_Init_Psum;
-//         Done_Init_Psum <= Done_Init_Psum;
-//     end
-// end
+            end
+            else begin
+                r_Init_Psram_Addr_Two <= Run_Cnt_Init;
+                r_Init_Psram_En_Two <= 1'b1;
+                r_Init_Psram_Wea_Two <= 1'b1;
+            end
+        end
+        else if (Run_Cnt_Init == (((r_Param_OC - 8'd1) / `PE_COL)+1'b1) * r_Param_S) begin
+            Done_Init_Psum <= 1'b1;
+            r_Init_Psum <= 0;
+        end
+        else begin
+            Run_Cnt_Init <= 0;
+            r_Init_Psram_Addr_One <= 0;
+            r_Init_Psram_En_One <= 0;
+            r_Init_Psram_Wea_One <= 0;
+            r_Init_Psram_Addr_Two <= 0;
+            r_Init_Psram_En_Two <= 0;
+            r_Init_Psram_Wea_Two <= 0;
+        end
+    end
+    else begin
+        Run_Cnt_Init <= 0;
+        r_Init_Psram_Addr_One <= 0;
+        r_Init_Psram_En_One <= 0;
+        r_Init_Psram_Wea_One <= 0;
+        r_Init_Psram_Addr_Two <= 0;
+        r_Init_Psram_En_Two <= 0;
+        r_Init_Psram_Wea_Two <= 0;
+    end
+end
 
 
 endmodule
-
-

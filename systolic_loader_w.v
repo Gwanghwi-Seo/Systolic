@@ -1,4 +1,4 @@
-`include "./param.v"
+`include "param.v"
 
 module systolic_loader_w(
     CLK, RST,
@@ -34,4 +34,3 @@ begin
 end
 
 endmodule
-
